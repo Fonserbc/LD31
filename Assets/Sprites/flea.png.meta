@@ -18,6 +18,14 @@ TextureImporter:
     21300026: flea_right_1
     21300028: flea_left_1
     21300030: flea_up_1
+    21300032: flea_black_up
+    21300034: flea_black_up_1
+    21300036: flea_black_down
+    21300038: flea_black_down_1
+    21300040: flea_black_right
+    21300042: flea_black_right_1
+    21300044: flea_black_left
+    21300046: flea_black_left_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -214,6 +222,86 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 32
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_up
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_up_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_down
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_down_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_right
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_right_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_left
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flea_black_left_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
         width: 15
         height: 15
       alignment: 0

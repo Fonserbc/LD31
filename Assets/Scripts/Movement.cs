@@ -3,15 +3,26 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	float speed = 2.0f;
+	float speed = 1.5f;
 
 	Animator anim;
 	
 	Vector2 vel = new Vector3();
+	
+	public bool covered = true;
 
 	// Use this for initialization
 	void Start () {
+		covered = true;
+	
 		anim = GetComponent<Animator>();
+		anim.SetBool("cover", covered);
+	}
+	
+	void Update() {
+		covered = !Input.GetButton("Jump");
+		
+		anim.SetBool("cover", covered);
 	}
 	
 	void FixedUpdate () {
@@ -24,10 +35,18 @@ public class Movement : MonoBehaviour {
 		anim.SetFloat ("horizontal", hAxis);
 		anim.SetFloat ("vertical", vAxis);
 		
-		vel.x = rigidbody2D.velocity.x * 0.97f + hAxis * speed * Time.fixedDeltaTime;
-		vel.y = rigidbody2D.velocity.y * 0.97f + vAxis * speed * Time.fixedDeltaTime;
+		vel.x = hAxis * speed ;
+		vel.y = vAxis * speed;
 		
 		
 		rigidbody2D.velocity = vel;	
+	}
+	
+	public void Die() {
+		rigidbody2D.Sleep();
+		anim.SetFloat ("horizontal", 0.0f);
+		anim.SetFloat ("vertical", 0.0f);
+		
+		anim.SetBool("cover", false);
 	}
 }
