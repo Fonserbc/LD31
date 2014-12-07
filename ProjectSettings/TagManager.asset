@@ -3,6 +3,9 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - Tongue
+  - Canvas
+  - Logic
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -44,6 +47,14 @@ TagManager:
   - name: Table
     userID: 1
     uniqueID: 2179337617
+    locked: 0
+  - name: Phone
+    userID: 5
+    uniqueID: 442223149
+    locked: 0
+  - name: Phone front
+    userID: 6
+    uniqueID: 3277185097
     locked: 0
   - name: Tongue
     userID: 4

@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour {
 	
 	Vector2 vel = new Vector3();
 	
+	Logic l;
+	
 	public bool covered = true;
 
 	// Use this for initialization
@@ -17,6 +19,8 @@ public class Movement : MonoBehaviour {
 	
 		anim = GetComponent<Animator>();
 		anim.SetBool("cover", covered);
+		
+		l = GameObject.FindGameObjectWithTag("Logic").GetComponent<Logic>();
 	}
 	
 	void Update() {
@@ -48,5 +52,7 @@ public class Movement : MonoBehaviour {
 		anim.SetFloat ("vertical", 0.0f);
 		
 		anim.SetBool("cover", false);
+		
+		l.GameOver();
 	}
 }
