@@ -25,14 +25,10 @@ public class KillOnTrigger : MonoBehaviour {
 			tongue.Eat();
 		}
 		else if (col.gameObject.name == "Menu") {
-			canvas.SendMessage("PressedButton");
+			canvas.SendMessage("PressedButton");			
 		}
 		else if (col.gameObject.name == "Audio") {
-			
+			canvas.GetComponent<CanvasHolder>().l.ReduceSound();
 		}
-	}
-	
-	void OnTriggerExit2D (Collider2D col) {
-	
 	}
 }

@@ -22,6 +22,8 @@ public class Logic : MonoBehaviour {
 	
 	public SpriteRenderer phoneBackground;
 	public Sprite blackBackground;
+	Sprite backgroundSprite;
+	bool screenOn = true;
 	
 	public GameObject[] Action1;
 	public GameObject[] Action2;
@@ -29,23 +31,13 @@ public class Logic : MonoBehaviour {
 	
 	public float timeFactor = 1.0f;
 	
+	public AudioClip winSound, loseSound, prepareSound;
+	public AudioSource baseMusic;
+	
 	MiniGame currentGame;
 	GameObject currentGameObject;
-
-	// Use this for initialization
-	void Awake () {
-		if (GameObject.FindGameObjectsWithTag("Logic").Length > 1) {
-			Destroy(gameObject);
-		}
-		else {
-			DontDestroyOnLoad (gameObject);
-			if (Application.loadedLevel == 0) Application.LoadLevel(Application.loadedLevel+1);
-			
-			OnLevelWasLoaded();
-		}
-	}
 	
-	void OnLevelWasLoaded() {
+	void Awake() {
 		canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasHolder>();
 		
 		lives = 3;
@@ -67,6 +59,13 @@ public class Logic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (screenOn) {
+			phoneBackground.sprite = backgroundSprite;		
+		}
+		else {
+			phoneBackground.sprite = blackBackground;		
+		}
+	
 		if (currentGameObject) {
 			if (canvas.on) {
 				currentGameObject.transform.position = canvas.transform.position;
@@ -132,7 +131,7 @@ public class Logic : MonoBehaviour {
 		currentGameObject.transform.position = canvas.transform.position;
 		
 		if (currentGame.background != null) {
-			phoneBackground.sprite = currentGame.background;
+			backgroundSprite = currentGame.background;
 		}
 	
 		currTime = currentGame.gameTime * timeFactor;
@@ -153,6 +152,8 @@ public class Logic : MonoBehaviour {
 	}
 	
 	public void Lose() {
+		audio.PlayOneShot(loseSound);
+		
 		lives--;
 		
 		canvas.lives.fillAmount = (float) lives / 3.0f;
@@ -178,12 +179,14 @@ public class Logic : MonoBehaviour {
 		currentGame = null;
 		currentGameObject = null;
 		
-		phoneBackground.sprite = blackBackground;
+		backgroundSprite = blackBackground;
 		
 		stoppedTime = 0.0f;
 	}
 	
 	public void Win () {
+		audio.PlayOneShot(winSound);
+		
 		points ++;
 		canvas.points.text = points.ToString();
 		
@@ -200,9 +203,23 @@ public class Logic : MonoBehaviour {
 		timeFactor = 0.3f + 0.7f * (1.0f - Mathf.Min(1.0f, ((float) points)/25.0f));
 		
 		win = true;
+		
+		stoppedTime = 0.0f;
+		
+		int record = 0;
+		if (PlayerPrefs.HasKey("record")) {
+			record = PlayerPrefs.GetInt("record");
+		}
+		
+		if (points > record) {
+			PlayerPrefs.SetInt("record", points);
+			PlayerPrefs.Save();
+		}
 	}
 	
-	public void Prepare() {
+	public void Prepare() {		
+		audio.PlayOneShot(prepareSound);
+	
 		canvas.lives.fillAmount = (float) lives / 3.0f;
 		canvas.points.text = points.ToString();		
 		canvas.middleText.enabled = true;
@@ -221,15 +238,29 @@ public class Logic : MonoBehaviour {
 		currentGame = null;
 		currentGameObject = null;
 		
-		phoneBackground.sprite = blackBackground;
+		backgroundSprite = blackBackground;
 	}
 	
 	public void GameOver () {
 		gameOver = true;
-		canvas = null;
 	}
 	
 	void FixedUpdate() {
 		if (Camera.main) transform.position = Camera.main.transform.position;
+	}
+	
+	public void TurnScreen(bool on) {
+		screenOn = on;
+	}
+	
+	public void ReduceSound() {
+		audio.volume = 0.05f;
+		baseMusic.volume = 0.1f;
+	}
+	
+	public void AugmentSound() {
+		audio.volume = 0.5f;
+		baseMusic.volume = 0.7f;
+		
 	}
 }

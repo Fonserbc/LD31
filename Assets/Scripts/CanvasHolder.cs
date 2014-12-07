@@ -20,12 +20,15 @@ public class CanvasHolder : MonoBehaviour {
 	Vector3 wantedScale = new Vector3();
 	RectTransform trans;
 	public bool on = true;
+	
+	public Logic l;
 		
 	void Start() {
 		trans = GetComponent<RectTransform>();
 		anchorMin.y = anchorMax.y = 0;
 		originalScale = trans.localScale;
 		wantedScale = originalScale;
+		l = GameObject.FindGameObjectWithTag("Logic").GetComponent<Logic>();
 	}
 
 	public void SetTimeFactor (float timeFactor) {
@@ -43,5 +46,7 @@ public class CanvasHolder : MonoBehaviour {
 	public void PressedButton() {
 		on = !on;			
 		wantedScale = on? originalScale : Vector3.zero;
+		
+		l.TurnScreen(on);
 	}
 }

@@ -6,6 +6,9 @@ public class Tongue : MonoBehaviour {
 	public GameObject tongueEnd;
 	
 	public bool tongueOut;
+	
+	public AudioSource enlarge;
+	public AudioSource thugh;
 
 	Vector3 originalPos;
 	float shakeTime = 0.15f;
@@ -106,7 +109,12 @@ public class Tongue : MonoBehaviour {
 		}
 		
 		tongueEnd.transform.position = Vector3.Lerp(tongueEnd.transform.position, wantedTonguePosition, Time.deltaTime * tongueSpeed);
+		
+		bool wasEnabled = tongueEnd.collider2D.enabled;
 		tongueEnd.collider2D.enabled = Vector3.Distance(tongueEnd.transform.position, wantedTonguePosition) < 0.1f;
+		if (!wasEnabled && tongueEnd.collider2D.enabled) {
+			thugh.Play();
+		}
 		
 		shakePosition.x = 0; shakePosition.y = 0;
 		
@@ -131,6 +139,7 @@ public class Tongue : MonoBehaviour {
 	void Throw () {
 		lastThrow = Time.time;
 		tongueOut = true;
+		enlarge.Play();
 	}
 	
 	public void Eat() {
@@ -143,5 +152,7 @@ public class Tongue : MonoBehaviour {
 		tongueOut = false;
 		
 		wantedTonguePosition = originalPos;
+		
+		l.AugmentSound();
 	}
 }
