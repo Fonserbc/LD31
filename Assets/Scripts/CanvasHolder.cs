@@ -19,7 +19,7 @@ public class CanvasHolder : MonoBehaviour {
 	Vector3 originalScale = new Vector3();
 	Vector3 wantedScale = new Vector3();
 	RectTransform trans;
-	bool on = true;
+	public bool on = true;
 		
 	void Start() {
 		trans = GetComponent<RectTransform>();

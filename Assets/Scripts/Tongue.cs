@@ -36,9 +36,13 @@ public class Tongue : MonoBehaviour {
 	Movement mov;
 	
 	bool eaten = false;
+	
+	Logic l;
 
 	// Use this for initialization
 	void Start () {
+		l = GameObject.FindGameObjectWithTag("Logic").GetComponent<Logic>();
+	
 		originalPos = transform.position;
 		wantedTonguePosition = transform.position;
 		tongueEnd.transform.position = transform.position;
@@ -112,7 +116,7 @@ public class Tongue : MonoBehaviour {
 			shakePosition.x += Random.Range(-shakeAmount.x, shakeAmount.x);
 			shakePosition.y += Random.Range(-shakeAmount.y, shakeAmount.y);
 		}
-		else if (tongueOut && seenTime > outTime && mov.covered) {
+		else if (tongueOut && seenTime > outTime*l.timeFactor && mov.covered) {
 			Retrieve();
 		}
 		

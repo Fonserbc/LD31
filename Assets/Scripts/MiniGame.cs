@@ -3,6 +3,12 @@ using System.Collections;
 
 public class MiniGame : MonoBehaviour {
 
+	public float gameTime = 5.0f;
+	public string explain = "WHAT TO DO";
+	public Sprite background;
+	
+	public Logic l;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -11,5 +17,17 @@ public class MiniGame : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	void Randomize() {
+	
+	}
+	
+	void Win() {
+		l.Win();
+	}
+	
+	void Lose() {
+		l.Lose();
 	}
 }

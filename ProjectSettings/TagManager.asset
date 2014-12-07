@@ -52,6 +52,10 @@ TagManager:
     userID: 5
     uniqueID: 442223149
     locked: 0
+  - name: Phone UI
+    userID: 7
+    uniqueID: 2254578951
+    locked: 0
   - name: Phone front
     userID: 6
     uniqueID: 3277185097
