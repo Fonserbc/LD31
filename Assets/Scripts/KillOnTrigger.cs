@@ -20,6 +20,8 @@ public class KillOnTrigger : MonoBehaviour {
 			
 			Vector3 relPos = col.gameObject.transform.position - transform.position;
 			col.gameObject.transform.parent = transform;
+			relPos.x /= 2.0f;
+			relPos.y /= 2.0f;
 			col.gameObject.transform.localPosition = relPos;
 			
 			tongue.Eat();

@@ -31,7 +31,7 @@ public class Tongue : MonoBehaviour {
 	Delayed[] delayeds;
 	
 	int delayedIt = -1;
-	int delayedCount = 0;
+	public int delayedCount = 0;
 	
 	
 	GameObject player;
@@ -154,5 +154,9 @@ public class Tongue : MonoBehaviour {
 		wantedTonguePosition = originalPos;
 		
 		l.AugmentSound();
+	}
+	
+	public Vector3 MovementDirection() {
+		return (wantedTonguePosition - tongueEnd.transform.position).normalized;
 	}
 }

@@ -9,6 +9,10 @@ public class MiniGame : MonoBehaviour {
 	
 	public Logic l;
 
+	void Init() {
+	
+	}
+
 	// Use this for initialization
 	void Start () {
 	

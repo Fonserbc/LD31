@@ -200,7 +200,7 @@ public class Logic : MonoBehaviour {
 		canvas.fire.GetComponent<Image>().enabled = false;
 		canvas.rope.GetComponent<Image>().enabled = false;
 		
-		timeFactor = 0.3f + 0.7f * (1.0f - Mathf.Min(1.0f, ((float) points)/25.0f));
+		timeFactor = 0.4f + 0.6f * (1.0f - Mathf.Min(1.0f, ((float) points)/25.0f));
 		
 		win = true;
 		
