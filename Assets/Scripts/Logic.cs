@@ -106,7 +106,7 @@ public class Logic : MonoBehaviour {
 	
 	void StartGame() {
 		int max;
-		if (points < 5) { // Easy
+		if (points < 3) { // Easy
 			max = Action1.Length;
 		}
 		else if (points < 10) { // Medium

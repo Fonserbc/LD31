@@ -98,7 +98,10 @@ MonoBehaviour:
   Pressed: {fileID: 21300006, guid: 2396039e6dd640e4db6f95e4536ed221, type: 3}
   NotPressed: {fileID: 21300004, guid: 2396039e6dd640e4db6f95e4536ed221, type: 3}
   winner: 1
+  loser: 0
+  switchAct: 0
   autoFix: 0
+  state: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2deb4bfc146e94e429dcfa8e3af3651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 4
+  gameTime: 5
   explain: HIT THE BLANK!
   background: {fileID: 21300004, guid: dae3e67dae7b89049a9e24c6f18a7982, type: 3}
   l: {fileID: 0}

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2deb4bfc146e94e429dcfa8e3af3651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 4
+  gameTime: 5
   explain: CUT THE WATERMELON
   background: {fileID: 21300002, guid: dae3e67dae7b89049a9e24c6f18a7982, type: 3}
   l: {fileID: 0}
