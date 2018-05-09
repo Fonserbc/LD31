@@ -15,8 +15,8 @@ public class Melon : MonoBehaviour {
 	}
 	
 	void Init() {
-		rigidbody2D.velocity = new Vector2(Random.Range(-0.1f, 0.1f), 1.3f);
-		rigidbody2D.angularVelocity = Random.Range(-0.1f, 0.1f);
+		GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-0.1f, 0.1f), 1.3f);
+		GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-0.1f, 0.1f);
 	}
 	
 	void OnTriggerEnter2D (Collider2D col) {
@@ -37,7 +37,7 @@ public class Melon : MonoBehaviour {
 				
 				SendMessageUpwards("Win");
 				
-				Destroy(rigidbody2D);
+				Destroy(GetComponent<Rigidbody2D>());
 				
 				won = true;
 			}

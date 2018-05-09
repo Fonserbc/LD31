@@ -103,7 +103,8 @@ public class Logic : MonoBehaviour {
 			}
 		}
 	}
-	
+
+    int lastGame = -1;
 	void StartGame() {
 		int max;
 		if (points < 3) { // Easy
@@ -117,6 +118,9 @@ public class Logic : MonoBehaviour {
 		}
 		
 		int r = Random.Range(0, max);
+        if (r == lastGame) r = (r + 1) % max;
+        lastGame = r;
+
 		currentGameObject = (GameObject) GameObject.Instantiate(
 			(r >= Action1.Length)?
 				((r - Action1.Length >= Action2.Length)?
@@ -152,7 +156,7 @@ public class Logic : MonoBehaviour {
 	}
 	
 	public void Lose() {
-		audio.PlayOneShot(loseSound);
+		GetComponent<AudioSource>().PlayOneShot(loseSound);
 		
 		lives--;
 		
@@ -185,40 +189,45 @@ public class Logic : MonoBehaviour {
 	}
 	
 	public void Win () {
-		audio.PlayOneShot(winSound);
-		
-		points ++;
-		canvas.points.text = points.ToString();
-		
-		canvas.points.enabled = true;
-		canvas.topText.enabled = false;		
-		
-		canvas.middleText.text = "SUCCESS!";
-		canvas.middleText.enabled = true;
-		
-		canvas.bomb.enabled = false;
-		canvas.fire.GetComponent<Image>().enabled = false;
-		canvas.rope.GetComponent<Image>().enabled = false;
-		
-		timeFactor = 0.4f + 0.6f * (1.0f - Mathf.Min(1.0f, ((float) points)/25.0f));
-		
-		win = true;
-		
-		stoppedTime = 0.0f;
-		
-		int record = 0;
-		if (PlayerPrefs.HasKey("record")) {
-			record = PlayerPrefs.GetInt("record");
-		}
-		
-		if (points > record) {
-			PlayerPrefs.SetInt("record", points);
-			PlayerPrefs.Save();
-		}
+        if (!win)
+        {
+            GetComponent<AudioSource>().PlayOneShot(winSound);
+
+            points++;
+            canvas.points.text = points.ToString();
+
+            canvas.points.enabled = true;
+            canvas.topText.enabled = false;
+
+            canvas.middleText.text = "SUCCESS!";
+            canvas.middleText.enabled = true;
+
+            canvas.bomb.enabled = false;
+            canvas.fire.GetComponent<Image>().enabled = false;
+            canvas.rope.GetComponent<Image>().enabled = false;
+
+            timeFactor = 0.4f + 0.6f * (1.0f - Mathf.Min(1.0f, ((float)points) / 25.0f));
+
+            win = true;
+
+            stoppedTime = 0.0f;
+
+            int record = 0;
+            if (PlayerPrefs.HasKey("record"))
+            {
+                record = PlayerPrefs.GetInt("record");
+            }
+
+            if (points > record)
+            {
+                PlayerPrefs.SetInt("record", points);
+                PlayerPrefs.Save();
+            }
+        }
 	}
 	
 	public void Prepare() {		
-		audio.PlayOneShot(prepareSound);
+		GetComponent<AudioSource>().PlayOneShot(prepareSound);
 	
 		canvas.lives.fillAmount = (float) lives / 3.0f;
 		canvas.points.text = points.ToString();		
@@ -254,12 +263,12 @@ public class Logic : MonoBehaviour {
 	}
 	
 	public void ReduceSound() {
-		audio.volume = 0.05f;
+		GetComponent<AudioSource>().volume = 0.05f;
 		baseMusic.volume = 0.1f;
 	}
 	
 	public void AugmentSound() {
-		audio.volume = 0.5f;
+		GetComponent<AudioSource>().volume = 0.5f;
 		baseMusic.volume = 0.7f;
 		
 	}

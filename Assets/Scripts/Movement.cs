@@ -43,11 +43,11 @@ public class Movement : MonoBehaviour {
 		vel.y = vAxis * speed;
 		
 		
-		rigidbody2D.velocity = vel;	
+		GetComponent<Rigidbody2D>().velocity = vel;	
 	}
 	
 	public void Die() {
-		rigidbody2D.Sleep();
+		GetComponent<Rigidbody2D>().Sleep();
 		anim.SetFloat ("horizontal", 0.0f);
 		anim.SetFloat ("vertical", 0.0f);
 		

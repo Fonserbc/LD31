@@ -110,9 +110,9 @@ public class Tongue : MonoBehaviour {
 		
 		tongueEnd.transform.position = Vector3.Lerp(tongueEnd.transform.position, wantedTonguePosition, Time.deltaTime * tongueSpeed);
 		
-		bool wasEnabled = tongueEnd.collider2D.enabled;
-		tongueEnd.collider2D.enabled = Vector3.Distance(tongueEnd.transform.position, wantedTonguePosition) < 0.1f;
-		if (!wasEnabled && tongueEnd.collider2D.enabled) {
+		bool wasEnabled = tongueEnd.GetComponent<Collider2D>().enabled;
+		tongueEnd.GetComponent<Collider2D>().enabled = Vector3.Distance(tongueEnd.transform.position, wantedTonguePosition) < 0.1f;
+		if (!wasEnabled && tongueEnd.GetComponent<Collider2D>().enabled) {
 			thugh.Play();
 		}
 		

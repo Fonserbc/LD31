@@ -16,7 +16,7 @@ public class KillOnTrigger : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			col.gameObject.SendMessage("Die");
 			col.gameObject.GetComponent<Movement>().enabled = false;
-			col.gameObject.collider2D.enabled = false;
+			col.gameObject.GetComponent<Collider2D>().enabled = false;
 			
 			Vector3 relPos = col.gameObject.transform.position - transform.position;
 			col.gameObject.transform.parent = transform;
