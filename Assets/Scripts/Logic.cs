@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Logic : MonoBehaviour {
 
@@ -62,6 +62,11 @@ public class Logic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene(0);
+            return;
+        }
+
 		if (screenOn) {
 			phoneBackground.sprite = backgroundSprite;		
 		}
@@ -95,9 +100,10 @@ public class Logic : MonoBehaviour {
 		
 		if (stoppedTime > restartTime) {
 			stoppedTime = 0.0f;
-			if (gameOver) {
-				Application.LoadLevel(0);
-			}
+			if (gameOver)
+            {
+                SceneManager.LoadScene(0);
+            }
 			else if (lost) {
 				Prepare();
 				stoppedTime += restartTime/3.0f;

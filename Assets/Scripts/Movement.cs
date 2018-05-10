@@ -24,7 +24,13 @@ public class Movement : MonoBehaviour {
 	}
 	
 	void Update() {
-		covered = !Input.GetButton("Jump");
+        if (covered && Input.GetButtonDown("Jump"))
+        {
+            covered = false;
+        }
+        else if (!covered && Input.GetButtonUp("Jump")) {
+            covered = true;
+        }
 		
 		anim.SetBool("cover", covered);
 	}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StartScreen : MonoBehaviour {
 
@@ -12,7 +11,7 @@ public class StartScreen : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Jump"))
         {
-            Application.LoadLevel(Application.loadedLevel + 1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
         else if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
