@@ -10,8 +10,12 @@ public class StartScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Jump")) {
-			Application.LoadLevel(Application.loadedLevel + 1);
-		}
+        if (Input.GetButtonDown("Jump"))
+        {
+            Application.LoadLevel(Application.loadedLevel + 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
 	}
 }

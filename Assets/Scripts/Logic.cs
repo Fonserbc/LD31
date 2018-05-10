@@ -33,6 +33,9 @@ public class Logic : MonoBehaviour {
 	
 	public AudioClip winSound, loseSound, prepareSound;
 	public AudioSource baseMusic;
+
+    public Sprite toadfront;
+    public SpriteRenderer toad;
 	
 	MiniGame currentGame;
 	GameObject currentGameObject;
@@ -85,6 +88,10 @@ public class Logic : MonoBehaviour {
 		if (canvas) canvas.SetTimeFactor(currTime / gameTime);
 		
 		stoppedTime += Time.deltaTime;
+
+        if (gameOver && stoppedTime > restartTime / 2f && toad.sprite != toadfront) {
+            toad.sprite = toadfront;
+        }
 		
 		if (stoppedTime > restartTime) {
 			stoppedTime = 0.0f;
@@ -252,7 +259,8 @@ public class Logic : MonoBehaviour {
 	
 	public void GameOver () {
 		gameOver = true;
-	}
+        stoppedTime = 0.0f;
+    }
 	
 	void FixedUpdate() {
 		if (Camera.main) transform.position = Camera.main.transform.position;

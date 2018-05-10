@@ -1,14 +1,21 @@
 fileFormatVersion: 2
 guid: 630f9dda365513c48ab63d40e75db99b
 TrueTypeFontImporter:
-  serializedVersion: 2
-  fontSize: 16
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 8
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
+  fontName: HighPixels
+  fontNames:
+  - HighPixels
+  fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
